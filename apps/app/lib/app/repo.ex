@@ -7,7 +7,7 @@ defmodule App.Repo do
   def init(_context, config) do
     if Mix.env() == :prod do
       database_url = System.fetch_env!("DATABASE_URL")
-      pool_size = String.to_integer(System.fetch_env!("POOL_SIZE"))
+      pool_size = String.to_integer(System.fetch_env!("DATABASE_POOL_SIZE"))
 
       {:ok,
        config
