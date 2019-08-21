@@ -2,7 +2,7 @@ defmodule AppWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :app_web
 
   socket "/socket", AppWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
@@ -43,4 +43,21 @@ defmodule AppWeb.Endpoint do
     signing_salt: "d957HQfI"
 
   plug AppWeb.Router
+
+  @impl true
+  def init(:supervisor, config) do
+    if Mix.env() == :prod do
+      host = System.fetch_env!("HOST")
+      port = String.to_integer(System.fetch_env!("PORT"))
+      secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
+
+      {:ok,
+       config
+       |> put_in([:url, :host], host)
+       |> put_in([:http, :port], port)
+       |> Keyword.put(:secret_key_base, secret_key_base)}
+    else
+      {:ok, config}
+    end
+  end
 end

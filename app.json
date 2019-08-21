@@ -15,6 +15,10 @@
     "SECRET_KEY_BASE": {
       "description": "A secret key generated with `mix phx.gen.secret`",
       "required": true
+    },
+    "HOST": {
+      "description": "The host that the app will run on, e.g. `my-app.herokuapp.com`",
+      "required": true
     }
   }
 }

@@ -10,8 +10,12 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :app_web, AppWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  http: [:inet6],
+  url: [scheme: "https", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
+
+config :app, App.Repo, ssl: true
 
 # ## SSL Support
 #
@@ -49,7 +53,3 @@ config :app_web, AppWeb.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"
