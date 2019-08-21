@@ -56,7 +56,7 @@ defmodule AppWeb.Endpoint do
       {:ok,
        config
        |> put_in([:url, :host], host)
-       |> put_in([:http, :port], port)
+       |> Keyword.update!(:http, &(&1 ++ [port: port]))
        |> put_in([:pubsub, :node_name], redis_node_name)
        |> put_in([:pubsub, :url], redis_url)
        |> Keyword.put(:secret_key_base, secret_key_base)}
