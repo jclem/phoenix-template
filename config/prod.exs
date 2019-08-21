@@ -13,7 +13,8 @@ config :app_web, AppWeb.Endpoint,
   http: [:inet6],
   url: [scheme: "https", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  pubsub: [name: AppWeb.PubSub, adapter: Phoenix.PubSub.Redis]
 
 config :app, App.Repo, ssl: true
 

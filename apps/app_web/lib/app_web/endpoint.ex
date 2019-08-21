@@ -50,11 +50,15 @@ defmodule AppWeb.Endpoint do
       host = System.fetch_env!("HOST")
       port = String.to_integer(System.fetch_env!("PORT"))
       secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
+      redis_node_name = host <> "-" <> Base.encode16(:crypto.strong_rand_bytes(16), case: :lower)
+      redis_url = System.fetch_env!("REDIS_URL")
 
       {:ok,
        config
        |> put_in([:url, :host], host)
        |> put_in([:http, :port], port)
+       |> put_in([:pubsub, :node_name], redis_node_name)
+       |> put_in([:pubsub, :url], redis_url)
        |> Keyword.put(:secret_key_base, secret_key_base)}
     else
       {:ok, config}
