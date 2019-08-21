@@ -1,0 +1,20 @@
+{
+  "name": "Phoenix Template",
+  "description": "A template for deploying Phoenix applications to Heroku",
+  "repository": "https://github.com/jclem/phoenix-template",
+  "keywords": ["elixir", "phoenix"],
+  "addons": ["heroku-postgresql", "heroku-redis", "papertrail"],
+  "buildpacks": [{
+    "url": "https://github.com/HashNuke/heroku-buildpack-elixir"
+  }, {
+    "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static"
+  }],
+  "env": {
+    "MIX_ENV": "prod",
+    "DATABASE_POOL_SIZE": "18",
+    "SECRET_KEY_BASE": {
+      "description": "A secret key generated with `mix phx.gen.secret`",
+      "required": true
+    }
+  }
+}
