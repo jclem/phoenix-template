@@ -4,11 +4,10 @@
   "repository": "https://github.com/jclem/phoenix-template",
   "keywords": ["elixir", "phoenix"],
   "addons": ["heroku-postgresql", "heroku-redis", "papertrail"],
-  "buildpacks": [{
-    "url": "https://github.com/HashNuke/heroku-buildpack-elixir"
-  }, {
-    "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static"
-  }],
+  "buildpacks": [
+    {"url": "https://github.com/HashNuke/heroku-buildpack-elixir"},
+    {"url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static"}
+  ],
   "env": {
     "MIX_ENV": "prod",
     "DATABASE_POOL_SIZE": "18",
@@ -18,6 +17,11 @@
     },
     "HOST": {
       "description": "The host that the app will run on, e.g. `my-app.herokuapp.com`",
+      "required": true
+    },
+    "OTP_COOKIE": {
+      "description": "A cookie used for remote node connections",
+      "generator": "secret",
       "required": true
     }
   }
