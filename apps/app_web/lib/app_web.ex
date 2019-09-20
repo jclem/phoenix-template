@@ -62,6 +62,14 @@ defmodule AppWeb do
     end
   end
 
+  def live do
+    quote do
+      use Phoenix.LiveView
+      use Phoenix.HTML
+      alias AppWeb.Router.Helpers, as: Routes
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
