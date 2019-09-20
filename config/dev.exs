@@ -58,7 +58,8 @@ config :app_web, AppWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/app_web/{live,views}/.*(ex)$",
+      ~r"lib/app_web/views/.*(ex)$",
+      ~r"lib/app_web/live/.*(ex)$",
       ~r"lib/app_web/templates/.*(eex)$"
     ]
   ]
