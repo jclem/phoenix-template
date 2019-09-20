@@ -46,7 +46,8 @@ defmodule AppWeb.MixProject do
       {:app, in_umbrella: true},
       {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.1"},
-      {:phoenix_pubsub_redis, "~> 2.1.7"}
+      {:phoenix_pubsub_redis, "~> 2.1.7"},
+      {:phoenix_live_view, "~> 0.2"}
     ]
   end
 

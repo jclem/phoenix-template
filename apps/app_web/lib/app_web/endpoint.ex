@@ -5,6 +5,10 @@ defmodule AppWeb.Endpoint do
     websocket: [timeout: 45_000],
     longpoll: false
 
+  socket "/live", Phoenix.LiveView.Socket,
+    websocket: [timeout: 45_000],
+    longpoll: false
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
@@ -52,6 +56,7 @@ defmodule AppWeb.Endpoint do
       secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
       redis_node_name = host <> "-" <> Base.encode16(:crypto.strong_rand_bytes(16), case: :lower)
       redis_url = System.fetch_env!("REDIS_URL")
+      live_view_signing_salt = System.fetch_env!("LIVE_VIEW_SIGNING_SALT")
 
       {:ok,
        config
@@ -59,7 +64,8 @@ defmodule AppWeb.Endpoint do
        |> Keyword.update!(:http, &(&1 ++ [port: port]))
        |> put_in([:pubsub, :node_name], redis_node_name)
        |> put_in([:pubsub, :url], redis_url)
-       |> Keyword.put(:secret_key_base, secret_key_base)}
+       |> Keyword.put(:secret_key_base, secret_key_base)
+       |> Keyword.put(:live_view, signing_salt: live_view_signing_salt)}
     else
       {:ok, config}
     end
