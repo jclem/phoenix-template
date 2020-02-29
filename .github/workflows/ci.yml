@@ -24,8 +24,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - id: runtime-versions
+        run: |
+          while read line; do
+            lang=$(echo $line | cut -d' ' -f1)
+            vsn=$(echo $line | cut -d' ' -f2)
+            echo ::set-output name=$lang::$vsn
+          done < .tool-versions
       - uses: actions/setup-elixir@v1
-        with: {otp-version: 22.2.8, elixir-version: 1.10.2}
+        with:
+          otp-version: ${{steps.runtime-versions.outputs.erlang}}
+          elixir-version: ${{steps.runtime-versions.outputs.elixir}}
       - run: mix deps.get
       - run: mix deps.compile
       - run: mix format --check-formatted
