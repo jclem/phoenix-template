@@ -24,3 +24,6 @@ erl_crash.dump
 
 # Ignore Elixir language server
 /.elixir_ls/
+
+# Ignore .env file
+.env
