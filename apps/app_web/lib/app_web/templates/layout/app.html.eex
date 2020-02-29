@@ -25,6 +25,7 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+    <%= csrf_meta_tag() %>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <%= if @view_module == Phoenix.LiveView.Controller do %>
       <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/live-view.js") %>"></script>

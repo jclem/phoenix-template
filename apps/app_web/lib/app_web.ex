@@ -22,7 +22,7 @@ defmodule AppWeb do
       use Phoenix.Controller, namespace: AppWeb
       import Plug.Conn
       import AppWeb.Gettext
-      import Phoenix.LiveView.Controller, only: [live_render: 3]
+      import Phoenix.LiveView.Controller
       alias AppWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,7 +41,8 @@ defmodule AppWeb do
 
       import AppWeb.ErrorHelpers
       import AppWeb.Gettext
-      import Phoenix.LiveView, only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
+      import Phoenix.LiveView.Helpers
+
       alias AppWeb.Router.Helpers, as: Routes
     end
   end

@@ -1,12 +1,18 @@
 defmodule AppWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :app_web
 
+  @session_options [
+    store: :cookie,
+    key: "_app_web_key",
+    signing_salt: "d957HQfI"
+  ]
+
   socket "/socket", AppWeb.UserSocket,
     websocket: [timeout: 45_000],
     longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket,
-    websocket: [timeout: 45_000],
+    websocket: [connect_info: [session: @session_options], timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
@@ -41,10 +47,7 @@ defmodule AppWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_app_web_key",
-    signing_salt: "d957HQfI"
+  plug Plug.Session, @session_options
 
   plug AppWeb.Router
 
