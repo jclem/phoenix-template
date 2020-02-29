@@ -37,6 +37,11 @@ jobs:
         with:
           otp-version: ${{steps.runtime-versions.outputs.erlang}}
           elixir-version: ${{steps.runtime-versions.outputs.elixir}}
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: deps
+          key: ${{runner.os}}-test-${{hashFiles('mix.lock')}}
       - name: Fetch dependencies
         run: mix deps.get
       - name: Compile dependencies
