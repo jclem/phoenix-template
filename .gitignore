@@ -19,4 +19,8 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
+# Do not ignore .vscode
 !.vscode/
+
+# Ignore Elixir language server
+/.elixir_ls/
