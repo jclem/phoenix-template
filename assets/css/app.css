@@ -6,6 +6,7 @@
 @import '../node_modules/nprogress/nprogress.css';
 
 body {
+  @apply p-8;
   @apply bg-gray-0;
   @apply text-gray-7;
 }
