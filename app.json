@@ -1,0 +1,25 @@
+{
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "buildpacks": [
+    {"url": "hashnuke/elixir"},
+    {"url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git"}
+  ],
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret generated via `mix phx.gen.secret`"
+    },
+    "DATABASE_POOL_SIZE": {
+      "description": "The database pool size",
+      "required": false,
+      "value": "10"
+    },
+    "HOST": {
+      "description": "The app's host (required for non-review apps)",
+      "required": false
+    },
+    "MIX_ENV": {
+      "description": "The mix environment",
+      "value": "prod"
+    }
+  }
+}
