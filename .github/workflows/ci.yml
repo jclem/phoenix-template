@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push: {branches: main}
+  pull_request: {branches: main}
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:13
+        env: {POSTGRES_PASSWORD: postgres}
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Restore mix cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - uses: actions/setup-elixir@v1
+        with: {otp-version: 23.0.3, elixir-version: 1.10.4}
+      - name: Fetch mix dependencies
+        run: mix deps.get
+      - name: Run format check
+        run: mix format --check-formatted
+      - name: Run tests
+        run: mix test
