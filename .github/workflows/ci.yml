@@ -10,6 +10,7 @@ jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
+    env: {MIX_ENV: test}
 
     services:
       db:
