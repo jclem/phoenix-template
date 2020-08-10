@@ -35,8 +35,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: _build
-          key: ${{ runner.os }}-mix-${{ hashFiles('mix.lock') }}
-          restore-keys: ${{ runner.os }}-mix-
+          key: ${{ runner.os }}-build-${{ hashFiles('mix.lock') }}-${{ hashFiles('**.ex?') }}
+          restore-keys: ${{ runner.os }}-build-
       - uses: actions/setup-elixir@v1
         with: {otp-version: 23.0.3, elixir-version: 1.10.4}
       - name: Fetch mix dependencies
