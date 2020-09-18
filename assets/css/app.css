@@ -7,6 +7,6 @@
 
 body {
   @apply p-8;
-  @apply bg-gray-0;
-  @apply text-gray-7;
+  @apply bg-gray-50;
+  @apply text-gray-700;
 }
