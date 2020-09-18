@@ -3,6 +3,9 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
+  "files.associations": {
+    "*.css": "postcss"
+  },
   "files.exclude": {
     "_build": true,
     ".elixir_ls": true,
