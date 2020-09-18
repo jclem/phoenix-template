@@ -11,7 +11,7 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <header class="container mx-auto">
+    <header class="max-w-6xl mx-auto">
       <h1 class="text-4xl font-bold">App</h1>
       <nav role="navigation">
         <ul>
@@ -19,7 +19,7 @@
       </nav>
     </header>
 
-    <main role="main" class="container mx-auto">
+    <main role="main" class="max-w-6xl mx-auto">
       <%= @inner_content %>
     </main>
   </body>
