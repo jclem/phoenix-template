@@ -1,9 +1,9 @@
 /* This file is for your main application css. */
-@import '../node_modules/open-color/open-color.css';
+@import 'open-color/open-color.css';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import '../node_modules/nprogress/nprogress.css';
+@import 'nprogress/nprogress.css';
 
 body {
   @apply p-8;

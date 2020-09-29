@@ -6,8 +6,7 @@ module.exports = {
     '../**/*.html.leex',
     '../**/views/**/*.ex',
     '../**/live/**/*.ex',
-    '../js/**/*.js',
-    '../css/**/*.css'
+    './js/**/*.js'
   ],
   theme: {
     extend: {
