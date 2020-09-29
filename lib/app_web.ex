@@ -75,6 +75,17 @@ defmodule AppWeb do
     end
   end
 
+  def plug do
+    quote do
+      @behaviour Plug
+
+      import Plug.Conn
+      import Phoenix.Controller
+
+      alias AppWeb.Router.Helpers, as: Routes
+    end
+  end
+
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
