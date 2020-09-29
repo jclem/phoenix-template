@@ -1,6 +1,6 @@
 # Phoenix Template
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/jclem/phoenix-template/tree/main)
 
 This repository contains the template I use for deploying Phoenix
 applications.
@@ -33,8 +33,7 @@ tweaks and extra modules:
 ### Deployment
 
 Deployment can be done via the "Deploy to Heroku" button above (although you
-[must provide a `template` query parameter for private
-repositories](https://devcenter.heroku.com/articles/heroku-button#private-github-repos)).
+must update the `template` query parameter in the button URL).
 
 The buildpacks are configured in
 [`elixir_buildpack.config`](/elixir_buildpack.config) and
